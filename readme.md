@@ -1,23 +1,38 @@
-# Wheeler
-### What It Does
-Wheeler is a peer-to-peer car-sharing platform that lets people rent cars directly from other car owners. 
-If you have a car that you don’t use all the time, you can list it on Wheeler and earn money. 
-If you need a car for a few hours or days, you can rent one nearby quickly and easily.
-### Why It Matters
-Many people have cars that sit idle, while others need cars but can’t afford expensive rentals. 
-Wheeler connects both sides — helping owners earn extra income and giving renters cheaper, flexible options. 
-It also makes the process simple, fast, and completely digital.
-### Who It’s For
-- **Car owners:** who want to earn from their underused cars. 
-- **Renters:** who need temporary access to cars without long paperwork or high deposits.
-### Key Features
-- Easy sign-up and user verification (phone number, ID, and selfie). 
-- Car owners can upload photos, set prices, and manage availability. 
-- Renters can search for cars by location, car type, or budget. 
-- Secure payments held in escrow until the car is returned. 
-- Automatic short-term insurance during rentals. 
-- Ratings and reviews to build trust between users.
-### Technologies (Simple Overview)
-Wheeler will be built as a mobile app using web and cloud technologies that make it fast, secure, and user-friendly.
-### Vision
-Wheeler aims to create a world where mobility is shared, safe, and accessible — helping people move freely while reducing wasted car value.
+# Wheeler: Peer-to-Peer Car Sharing
+## What Wheeler Does
+Wheeler is a peer-to-peer car sharing platform that connects private car owners with people who need temporary access to a vehicle. Unlike ride-hailing services like Uber or Bolt where you hire a driver, Wheeler gives you the car itself, allowing you to decide where to go, how long to keep it, and how to use it. It's completely digital, eliminating the need for physical branches, deposits, and paperwork that traditional car rentals require.
+## Why Wheeler Matters
+Wheeler solves three key problems in the transportation market:
+1. **Wasted Vehicle Value**: Many privately owned cars sit idle for long periods. Wheeler allows owners to monetize these underused assets.
+2. **Lack of Affordable Short-term Options**: Traditional car rentals can be expensive and inflexible for short-term needs.
+3. **Rental Friction**: Physical branches, paperwork, and deposits make traditional car rental inconvenient and time-consuming.
+By creating a trusted digital platform, Wheeler makes car sharing simple, safe, and accessible to everyone.
+## Who Wheeler Is For
+Wheeler serves two primary user groups:
+1. **Car Owners**: People who own vehicles that aren't in constant use and want to earn extra income by renting them out when they're not needed.
+2. **Renters**: Individuals who need temporary access to a vehicle without the commitment and cost of traditional car rentals or ride-hailing services.
+## Key Features
+### For Car Owners:
+- Easy onboarding with quick verification
+- Simple car listing process with photos and availability settings
+- Secure payment processing
+- Flexible pricing options
+- Insurance coverage during rental periods
+- Community-based trust through ratings
+### For Renters:
+- Search cars by location, type, and budget
+- View detailed car information and owner ratings
+- Seamless booking process
+- Secure payment held in escrow
+- Automatic insurance coverage
+- Transparent review system
+## Technologies
+Wheeler is built as a mobile application with the following core technologies:
+- User authentication and verification
+- Location-based search
+- Image uploading and processing
+- Real-time booking management
+- Secure payment processing
+- Short-term insurance integration
+- Rating and review system
+The platform is designed to be asset-light and completely digital, making it faster, cheaper, and more flexible than traditional car rental options.
