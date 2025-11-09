@@ -98,7 +98,82 @@ Wheeler is a peer-to-peer car sharing platform that connects car owners with ren
 The Wheeler system architecture is designed to be technically feasible through a lean MVP approach, focusing on core functionality while ensuring security, scalability, and performance. The microservices architecture allows for incremental development and future expansion without major architectural changes.
 
 
-
+```mermaid
+graph LR
+    %% Define Styles for different component types
+    classDef userStyle fill:#E3F2FD,stroke:#2196F3,color:#0D47A1
+    classDef clientStyle fill:#E8F5E9,stroke:#4CAF50,color:#1B5E20
+    classDef gatewayStyle fill:#FFF3E0,stroke:#FF9800,color:#E65100
+    classDef serviceStyle fill:#F3E5F5,stroke:#9C27B0,color:#4A148C
+    classDef dataStyle fill:#ECEFF1,stroke:#607D8B,color:#263238
+    classDef externalStyle fill:#FFEBEE,stroke:#F44336,color:#B71C1C
+    %% Users
+    EndUser[End Users]:::userStyle
+    Admin[Admin Users]:::userStyle
+    %% Client-Side
+    WebApp[Web Application<br>React/Vue]:::clientStyle
+    MobileApp[Mobile App<br>iOS/Android]:::clientStyle
+    AdminPanel[Admin Dashboard]:::clientStyle
+    %% API Gateway
+    Gateway[API Gateway<br>(Authentication, Routing, Rate Limiting)]:::gatewayStyle
+    %% Backend Microservices
+    UserService[User Management Service<br>(Profiles, Preferences)]:::serviceStyle
+    NotificationService[Notification Service<br>(Processing, Delivery)]:::serviceStyle
+    TemplateService[Template Service<br>(Content Management)]:::serviceStyle
+    EmailService[Email Service<br>(SMTP Integration)]:::serviceStyle
+    PushService[Push Notification Service<br>(FCM/APNS Integration)]:::serviceStyle
+    AnalyticsService[Analytics Service<br>(Tracking, Reporting)]:::serviceStyle
+    %% Message Queue for Async Communication
+    MessageQueue[Message Queue<br>(RabbitMQ)]:::serviceStyle
+    %% Data Storage
+    PostgreSQL[(PostgreSQL<br>Primary DB)]:::dataStyle
+    Redis[(Redis<br>Cache & Rate Limiting)]:::dataStyle
+    S3[(AWS S3<br>File Storage)]:::dataStyle
+    %% Third-Party Integrations
+    SendGrid[SendGrid<br>Email Service]:::externalStyle
+    FCM[Firebase Cloud Messaging<br>Push Service]:::externalStyle
+    APNS[Apple Push Notification<br>Service]:::externalStyle
+    WebPush[Web Push<br>Service]:::externalStyle
+    AnalyticsAPI[Google Analytics<br>API]:::externalStyle
+    %% Connections - User to Client
+    EndUser -- "HTTPS API" --> WebApp
+    EndUser -- "HTTPS API" --> MobileApp
+    Admin -- "HTTPS API" --> AdminPanel
+    %% Connections - Client to Gateway
+    WebApp -- "HTTPS Request" --> Gateway
+    MobileApp -- "HTTPS Request" --> Gateway
+    AdminPanel -- "HTTPS Request" --> Gateway
+    %% Connections - Gateway to Services
+    Gateway -- "Routes to" --> UserService
+    Gateway -- "Routes to" --> NotificationService
+    Gateway -- "Routes to" --> TemplateService
+    Gateway -- "Routes to" --> AnalyticsService
+    %% Connections - Services to Data Stores
+    UserService -- "Read/Write" --> PostgreSQL
+    UserService -- "Cache/Session" --> Redis
+    UserService -- "Store Avatars" --> S3
+    NotificationService -- "Read/Write" --> PostgreSQL
+    NotificationService -- "Cache Status" --> Redis
+    NotificationService -- "Publish Events" --> MessageQueue
+    TemplateService -- "Read/Write" --> PostgreSQL
+    TemplateService -- "Cache Templates" --> Redis
+    EmailService -- "Read/Write" --> PostgreSQL
+    EmailService -- "Process Queue" --> MessageQueue
+    EmailService -- "Send Email" --> SendGrid
+    PushService -- "Read/Write" --> PostgreSQL
+    PushService -- "Process Queue" --> MessageQueue
+    PushService -- "Send Push" --> FCM
+    PushService -- "Send Push" --> APNS
+    PushService -- "Send Push" --> WebPush
+    AnalyticsService -- "Read/Write" --> PostgreSQL
+    AnalyticsService -- "Cache Metrics" --> Redis
+    AnalyticsService -- "Track Events" --> AnalyticsAPI
+    %% Asynchronous Communication Flow
+    NotificationService -.->|'Notification Created'| MessageQueue
+    EmailService -.->|'Email Delivery Status'| MessageQueue
+    PushService -.->|'Push Delivery Status'| MessageQueue
+    MessageQueue -.->|'Update Analytics'| AnalyticsService
+```
 
 
 
